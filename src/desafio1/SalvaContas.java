@@ -2,7 +2,7 @@ package desafio1;
 
 import java.util.Scanner;
 
-public class Main {
+public class SalvaContas {
     public static void main(String[] args) {
        System.out.println("Deseja fazer alguma operação?");
         System.out.println("Digite *1* para sim e *0* para não");

@@ -3,7 +3,7 @@ package desafio1;
 public class ContaPoupanca extends Conta{
 
     public ContaPoupanca() {
-        super(tipoConta.POUPANCA, Conta.AGENCIA_PADRAO, SEQUENCIAL);
+        super(tipoConta.POUPANCA, Conta.AGENCIA_PADRAO, Conta.SEQUENCIAL);
         SEQUENCIAL+=1;
     }
 

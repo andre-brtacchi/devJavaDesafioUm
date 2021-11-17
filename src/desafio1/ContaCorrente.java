@@ -3,8 +3,7 @@ package desafio1;
 public class ContaCorrente extends Conta{
 
     public ContaCorrente() {
-        super(tipoConta.CORRENTE, AGENCIA_PADRAO,
-                SEQUENCIAL);
+        super(tipoConta.CORRENTE, AGENCIA_PADRAO, SEQUENCIAL);
        SEQUENCIAL+=1;
     }
 

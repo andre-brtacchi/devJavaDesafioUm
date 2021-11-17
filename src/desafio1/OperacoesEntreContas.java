@@ -1,6 +1,6 @@
 package desafio1;
 
-public class ContasTestes {
+public class OperacoesEntreContas {
     public static void main(String[] args) {
         Conta cc= new ContaCorrente();
         Conta poupanca=new ContaPoupanca();

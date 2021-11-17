@@ -1,11 +1,13 @@
 package desafio1;
 
 public abstract class Conta implements OperacoesBancarias {
+
+    private Pessoa titular;
     protected static int AGENCIA_PADRAO=1;
     protected static int SEQUENCIAL=1;
     enum tipoConta{CORRENTE,POUPANCA};
     private final tipoConta tipo;
-    public Conta(tipoConta tipo, Integer agencia, Integer numero) {
+    public Conta(tipoConta tipo, Integer agencia, int numero) {
         this.tipo = tipo;
         this.agencia = agencia;
         this.numero = numero;
@@ -14,6 +16,7 @@ public abstract class Conta implements OperacoesBancarias {
     private final Integer agencia;
     private final Integer numero;
     private Double saldo=0.0;
+    private Double limite=saldo*0.1;
 
 
     public Integer getAgencia() {
@@ -29,20 +32,34 @@ public abstract class Conta implements OperacoesBancarias {
         return saldo;
     }
 
+    public void calculaLimite(){
+        this.limite=this.saldo*0.1;
+    }
+
     public void setSaldo(Double saldo) {
         this.saldo = saldo;
     }
         @Override
         public void sacar(double valor) {
         saldo=saldo-valor;
+        calculaLimite();
             System.out.println("você retirou: "+valor+", seu saldo agora é de: "+saldo);
 
+    }
+
+    public Pessoa getTitular() {
+        return titular;
+    }
+
+    public void setTitular(Pessoa titular) {
+        this.titular = titular;
     }
 
         @Override
         public void depositar(double valor) {
             saldo+=valor;
             System.out.println("você depositou: "+valor+", seu saldo agora é de: "+saldo);
+            calculaLimite();
 
     }
 
@@ -50,6 +67,7 @@ public abstract class Conta implements OperacoesBancarias {
         public void transferir(double valor, Conta contaDestino) {
         this.sacar(valor);
         contaDestino.depositar(valor);
+        calculaLimite();
 
             System.out.println("você depositou "+valor+", seu saldo é de "+this.saldo);
     }
